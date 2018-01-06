@@ -7,6 +7,8 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
+import java.util.ArrayList;
+
 public class DbHelper extends SQLiteOpenHelper{
 
     private static final int DATABASE_VERSION=1;
@@ -56,5 +58,33 @@ public class DbHelper extends SQLiteOpenHelper{
              shop=new Shop(Integer.parseInt(cursor.getString(0)),cursor.getString(1),cursor.getString(2));
         }return shop;
     }
+
+    public ArrayList<Shop> getAllShops(){
+        ArrayList<Shop>shops=new ArrayList<Shop>();
+        SQLiteDatabase dp=this.getReadableDatabase();
+        String selectQuery="SELECT * FROM"+TABLE_SHOPS;
+
+        Cursor cursor=dp.rawQuery(selectQuery,null);
+        if(cursor!=null)
+        {
+            if(cursor.moveToFirst())
+            {
+                do {
+                    Shop shop=new Shop();
+                    shop.setId(Integer.parseInt(cursor.getString(0)));
+                    shop.setName(cursor.getString(1));
+                    shop.setAddress(cursor.getString(2));
+                    shops.add(shop);
+                }while (cursor.moveToNext());
+            }
+        }
+        return shops;
+    }
 }
+
+
+
+
+
+
 
