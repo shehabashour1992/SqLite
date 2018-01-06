@@ -62,7 +62,7 @@ public class DbHelper extends SQLiteOpenHelper{
     public ArrayList<Shop> getAllShops(){
         ArrayList<Shop>shops=new ArrayList<Shop>();
         SQLiteDatabase dp=this.getReadableDatabase();
-        String selectQuery="SELECT * FROM"+TABLE_SHOPS;
+        String selectQuery="SELECT * FROM "+TABLE_SHOPS;
 
         Cursor cursor=dp.rawQuery(selectQuery,null);
         if(cursor!=null)

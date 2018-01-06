@@ -4,6 +4,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 
+import java.util.ArrayList;
+
 public class MainActivity extends AppCompatActivity {
 /*
 A-storage Internal(device) :
@@ -28,5 +30,7 @@ B-External(server)
 //
 //        Log.e("shop1",shop1.getId()+"   "+shop1.getName()+"     "+shop1.getAddress()); //print row 1 in log file
 
+        ArrayList<Shop>shops=helper.getAllShops();
+        Log.e("shops",shops.size()+"");
     }
 }
